@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@discordjs/rest": "^2.4.3",
+    "@discordjs/ws": "^1.2.1",
+    "@sapphire/snowflake": "^3.5.5",
+    "discord.js": "^14.18.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "typescript": "5.4"
+  }
+}
