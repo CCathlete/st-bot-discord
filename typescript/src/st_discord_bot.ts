@@ -26,7 +26,6 @@ bot.on("voiceStateUpdate", async (before: VoiceState, after: VoiceState) => {
 
   const member: GuildMember | undefined =
     guild.members.cache.get(after.id) || guild.members.cache.get(before.id);
-
   // If member is undefined or a bot we exit the function.
   if (!member || member.user.bot) return;
 
