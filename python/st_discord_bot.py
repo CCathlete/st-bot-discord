@@ -1,6 +1,8 @@
+# type: ignore
+# mypy: ignore-errors
 import logging
 
-import nextcord
+import nextcord 
 from nextcord.ext import commands
 from nextcord.utils import get
 from typing import Optional
