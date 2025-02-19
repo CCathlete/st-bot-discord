@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits } from "discord.js";
-import { VoiceStateManager } from "./managers/VoiceStateManager";
+import { VoiceStateManager } from "./managers/VoiceStateManager.ts";
 
 /**
  *

@@ -1,5 +1,5 @@
 import { Client, VoiceState, Role, Guild, GuildMember } from "discord.js";
-import { CONFIG } from "../config/config";
+import { CONFIG } from "../config/config.ts";
 
 export class VoiceStateManager {
   private client: Client;

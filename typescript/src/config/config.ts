@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Config } from "../types/config";
+import { Config } from "../types/config.ts";
 
 config(); // Loading env vars.
 
