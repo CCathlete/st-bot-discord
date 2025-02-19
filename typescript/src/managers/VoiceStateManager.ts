@@ -10,7 +10,7 @@ import {
 
 export class VoiceStateManager {
   private client: Client;
-  private readonly studyChannelIds: number[] = [1234, 5678];
+  private readonly studyChannelIds: string[] = ["1234", "5678"];
 
   constructor(client: Client) {
     this.client = client;
@@ -43,8 +43,12 @@ export class VoiceStateManager {
     guild: Guild,
     member: GuildMember
   ): Promise<void> {
-    if (after.channelId && this.studyChannelIds.includes(Number(after.id))) {
+    if (after.channelId && this.studyChannelIds.includes(after.id)) {
       await this.addStudyingRole(guild, member);
+    }
+
+    if (before.channelId && this.studyChannelIds.includes(before.id)) {
+      await this.removeStudyingRole(guild, member);
     }
   }
 
