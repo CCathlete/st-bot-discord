@@ -1,7 +1,7 @@
 // Main entry point for the application.
 
-import { Bot } from "./Bot";
-import { CONFIG } from "./config/config";
+import { Bot } from "../src/Bot";
+import { CONFIG } from "../src/config/config";
 
 async function main(): Promise<void> {
   const bot: Bot = new Bot();
