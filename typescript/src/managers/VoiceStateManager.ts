@@ -1,16 +1,9 @@
-import {
-  Client,
-  VoiceState,
-  Role,
-  Guild,
-  GuildMember,
-  APIEmbedFooter,
-  VideoQualityMode,
-} from "discord.js";
+import { Client, VoiceState, Role, Guild, GuildMember } from "discord.js";
+import { CONFIG } from "../config/config";
 
 export class VoiceStateManager {
   private client: Client;
-  private readonly studyChannelIds: string[] = ["1234", "5678"];
+  private readonly studyChannelIds: string[] = CONFIG.STUDY_CHANNELS;
 
   constructor(client: Client) {
     this.client = client;
@@ -57,7 +50,7 @@ export class VoiceStateManager {
     member: GuildMember
   ): Promise<void> {
     const role: Role | undefined = guild.roles.cache.find(
-      (role: Role) => role.name === "studying"
+      (role: Role) => role.name === CONFIG.ROLE_NAMES.STUDYING
     );
     if (role) {
       await member.roles.add(role, "User joined studying voice channel.");
@@ -69,7 +62,7 @@ export class VoiceStateManager {
     member: GuildMember
   ): Promise<void> {
     const role: Role | undefined = guild.roles.cache.find(
-      (role: Role) => role.name === "studying"
+      (role: Role) => role.name === CONFIG.ROLE_NAMES.STUDYING
     );
     if (role) {
       await member.roles.remove(role, "User left studying voice channel.");
