@@ -5,7 +5,7 @@ import process from "node:process";
 config(); // Loading env vars.
 
 export const CONFIG: Config = {
-  STUDY_CHANNELS: ["1280097701232513036", "1280097701232513036"],
+  STUDY_CHANNELS: ["1280097701232513037", "1342043377067360256"],
   ROLE_NAMES: {
     STUDYING: "studying",
   },

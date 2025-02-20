@@ -20,6 +20,7 @@ export class VoiceStateManager {
     before: VoiceState,
     after: VoiceState
   ): Promise<void> {
+    console.log("Starting voice state update.");
     const guild: Guild | null = after.guild ?? before.guild;
     if (!guild) return;
 
@@ -39,12 +40,10 @@ export class VoiceStateManager {
   ): Promise<void> {
     if (after.channelId && this.studyChannelIds.includes(after.channelId)) {
       await this.addStudyingRole(guild, member);
-      console.log(`Added studying role to ${member.user.tag}.`);
     }
 
     if (before.channelId && this.studyChannelIds.includes(before.channelId)) {
       await this.removeStudyingRole(guild, member);
-      console.log(`Removed studying role from ${member.user.tag}.`);
     }
   }
 
@@ -57,6 +56,7 @@ export class VoiceStateManager {
     );
     if (role) {
       await member.roles.add(role, "User joined studying voice channel.");
+      console.log(`Added studying role to ${member.user.tag}.`);
     }
   }
 
@@ -69,6 +69,7 @@ export class VoiceStateManager {
     );
     if (role) {
       await member.roles.remove(role, "User left studying voice channel.");
+      console.log(`Removed studying role from ${member.user.tag}.`);
     }
   }
 }
