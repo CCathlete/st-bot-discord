@@ -23,6 +23,7 @@ export class VoiceStateManager {
     const guild: Guild | null = after.guild ?? before.guild;
     if (!guild) return;
 
+    // The voice states ids are the member id so after.id = after.member?.id.
     const memberId: string | undefined = after.id || before.id;
     const member: GuildMember | undefined = guild.members.cache.get(memberId);
     if (!member || member.user.bot) return;
@@ -36,11 +37,11 @@ export class VoiceStateManager {
     guild: Guild,
     member: GuildMember
   ): Promise<void> {
-    if (after.channelId && this.studyChannelIds.includes(after.id)) {
+    if (after.channelId && this.studyChannelIds.includes(after.channelId)) {
       await this.addStudyingRole(guild, member);
     }
 
-    if (before.channelId && this.studyChannelIds.includes(before.id)) {
+    if (before.channelId && this.studyChannelIds.includes(before.channelId)) {
       await this.removeStudyingRole(guild, member);
     }
   }
