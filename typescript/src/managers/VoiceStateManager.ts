@@ -39,10 +39,12 @@ export class VoiceStateManager {
   ): Promise<void> {
     if (after.channelId && this.studyChannelIds.includes(after.channelId)) {
       await this.addStudyingRole(guild, member);
+      console.log(`Added studying role to ${member.user.tag}.`);
     }
 
     if (before.channelId && this.studyChannelIds.includes(before.channelId)) {
       await this.removeStudyingRole(guild, member);
+      console.log(`Removed studying role from ${member.user.tag}.`);
     }
   }
 
