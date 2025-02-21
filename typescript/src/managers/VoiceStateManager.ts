@@ -3,6 +3,7 @@ import { CONFIG } from "../config/config.ts";
 
 export class VoiceStateManager {
   private client: Client;
+  // Better to store in some sort of hash map.
   private readonly studyChannelIds: string[] = CONFIG.STUDY_CHANNELS;
 
   constructor(client: Client) {
@@ -38,10 +39,12 @@ export class VoiceStateManager {
     guild: Guild,
     member: GuildMember
   ): Promise<void> {
+    // TODO: If member has a studyrole don't need to add.
     if (after.channelId && this.studyChannelIds.includes(after.channelId)) {
       await this.addStudyingRole(guild, member);
     }
 
+    // TODO: Put in if else.
     if (before.channelId && this.studyChannelIds.includes(before.channelId)) {
       await this.removeStudyingRole(guild, member);
     }
