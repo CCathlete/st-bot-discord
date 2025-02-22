@@ -40,9 +40,22 @@ export class Bot {
   }
 
   /**
+   * @async @method read_handshake
+   *
+   * Inspecting the handshake response.
+   */
+  public async read_handshake(): Promise<void> {
+    const response = await fetch("https://discord.com/api/v10/gateway");
+    console.log([...response.headers]); // Printing the headers
+    const data = await response.json();
+    console.log(data); // Printing the response.
+  }
+
+  /**
    * @async @method start
    */
   public async start(token: string): Promise<void> {
+    this.read_handshake();
     this.setupEventListeners();
     await this.client.login(token);
   }
